@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Juego: Adivina el número</title>
+    <style>
+        body {
+    background-image: url('Fondos/fondo8.jpg'); /* Cambia fondoX.jpg según el archivo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: rgb(245, 243, 243);
+            text-align: center;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        #mensaje {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>🎲 Juego: Adivina el número</h2>
+    <p>Adivina un número entre 1 y 25</p>
+
+    <input type="number" id="intento" placeholder="Ingresa tu número">
+    <button onclick="verificarIntento()">Adivinar</button>
+
+    <div id="mensaje"></div>
+
+    <script>
+        const numeroSecreto = Math.floor(Math.random() * 25) + 1;
+
+        function verificarIntento() {
+            const intento = parseInt(document.getElementById('intento').value);
+            const mensaje = document.getElementById('mensaje');
+
+            if (isNaN(intento)) {
+                mensaje.textContent = "Por favor ingresa un número válido.";
+                return;
+            }
+
+            if (intento < numeroSecreto) {
+                mensaje.textContent = "Demasiado bajo. ¡Intenta de nuevo!";
+            } else if (intento > numeroSecreto) {
+                mensaje.textContent = "Demasiado alto. ¡Intenta de nuevo!";
+            } else {
+                mensaje.textContent = "🎉 ¡Felicidades! ¡Adivinaste el número!";
+            }
+        }
+    </script>
+</body>
+</html>
